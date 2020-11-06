@@ -4,3 +4,18 @@ author: "Shantanu"
 date: "11/6/2020"
 output: html_document
 ---
+```{r datamodel}
+library(tidyverse)
+library(readxl)
+library(here)
+ca_np = read_csv(here("data", "ca_np.csv"))
+ci_np = read_excel(here("data", "ci_np.xlsx"))
+```
+
+```{r plottry}
+ggbase = ggplot(data = ci_np, aes(x = year, y = visitors))
+ggbase + geom_line( color = "purple", linetype = "dashed")
+ggbase + geom_point( color = "purple", pch = 17, size = 4, alpha = 0.5)
+ggbase + geom_point(aes(size = visitors, color = visitors), alpha = 1)
+ggbase + geom_col(aes(fill = visitors))
+```

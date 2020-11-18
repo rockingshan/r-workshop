@@ -22,5 +22,14 @@ siteyear_summary %>% kable()
 ggplot(data = siteyear_summary, aes(x = year, y = median_size_mm, color = site)) + geom_line()
 ggsave(here("figures", "lobsters_line1.png"))
 
+lobsters %>% count(site, year)
+
+lobsters_detailed = lobsters %>% mutate(size_m = size_mm/1000,
+                    millenia = 2000,
+                    author = "Shantanu",
+                    chanr_len = lengths(site))
+
+lobsters_detailed %>% select(date, site, size_m)
+
 ```
 
